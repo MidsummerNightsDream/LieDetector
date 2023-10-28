@@ -20,7 +20,7 @@ val TextNormal: TextStyle
             fontFamily = obiFont,
             fontWeight = FontWeight.Normal,
             fontSize = 12.ssp,
-            color = Color.Black
+            color = Color.White
         )
 
 val TextHeading: TextStyle
@@ -29,5 +29,5 @@ val TextHeading: TextStyle
             fontFamily = obiFont,
             fontWeight = FontWeight.Bold,
             fontSize = 14.ssp,
-            color = Color.Black
+            color = Color.White
         )

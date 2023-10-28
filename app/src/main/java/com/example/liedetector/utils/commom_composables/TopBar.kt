@@ -22,7 +22,6 @@ fun TopBarHome(text: String) {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(PrimaryColor)
             .padding(vertical = 5.sdp, horizontal = 15.sdp),
         verticalAlignment = Alignment.CenterVertically
     ) {

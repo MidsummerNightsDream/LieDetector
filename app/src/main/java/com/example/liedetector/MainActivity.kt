@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LieDetectorTheme {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = NavigationScreens.SplashScreen.route) {
+                NavHost(navController, startDestination = NavigationScreens.FingerPrintScreen.route) {
                     composable(NavigationScreens.SplashScreen.route) {
                         SplashScreen(navController)
                     }
