@@ -43,9 +43,11 @@ fun IconRow(vm: FingerPrintViewModel, modifier: Modifier = Modifier) {
                         onPress = {
                             try {
                                 vm.changePressedState()
+                                vm.startPressTimer()
                                 awaitRelease()
                             } finally {
                                 vm.changePressedState()
+                                vm.stopPressTimer()
                             }
                         },
                     )
