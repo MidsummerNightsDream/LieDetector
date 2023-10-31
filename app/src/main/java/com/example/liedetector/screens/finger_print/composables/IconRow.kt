@@ -12,12 +12,23 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.res.painterResource
+import androidx.navigation.NavController
 import com.example.liedetector.R
+import com.example.liedetector.navigation.NavigationScreens
 import com.example.liedetector.screens.finger_print.FingerPrintViewModel
 import ir.kaaveh.sdpcompose.sdp
 
 @Composable
-fun IconRow(vm: FingerPrintViewModel, modifier: Modifier = Modifier) {
+fun IconRow(vm: FingerPrintViewModel, navController: NavController, modifier: Modifier = Modifier) {
+
+    if (vm.showDialog.value){
+        ScanCompletedDialog({
+            NavigationScreens.navigateToScreen(navController, NavigationScreens.ResultScreen)
+        },{
+            vm.onDialogDismissed()
+        })
+    }
+
     Row(
         modifier = modifier
             .fillMaxWidth()

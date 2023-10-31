@@ -31,8 +31,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.liedetector.navigation.NavigationScreens
+import com.example.liedetector.screens.eye_detection.EyeDetectionScreen
 import com.example.liedetector.screens.finger_print.FingerPrintScreen
 import com.example.liedetector.screens.home.HomeScreen
+import com.example.liedetector.screens.result.ResultScreen
 import com.example.liedetector.screens.splash.SplashScreen
 import com.example.liedetector.ui.theme.LieDetectorTheme
 import com.example.liedetector.ui.theme.PrimaryColor
@@ -44,7 +46,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             LieDetectorTheme {
                 val navController = rememberNavController()
-                NavHost(navController, startDestination = NavigationScreens.FingerPrintScreen.route) {
+                NavHost(navController, startDestination = NavigationScreens.EyeDetectionScreen.route) {
                     composable(NavigationScreens.SplashScreen.route) {
                         SplashScreen(navController)
                     }
@@ -53,6 +55,12 @@ class MainActivity : ComponentActivity() {
 //                    }
                     composable(NavigationScreens.FingerPrintScreen.route) {
                         FingerPrintScreen(navController)
+                    }
+                    composable(NavigationScreens.ResultScreen.route) {
+                        ResultScreen(navController)
+                    }
+                    composable(NavigationScreens.EyeDetectionScreen.route) {
+                        EyeDetectionScreen(navController)
                     }
                 }
             }

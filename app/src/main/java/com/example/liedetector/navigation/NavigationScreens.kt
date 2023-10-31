@@ -10,6 +10,7 @@ sealed class NavigationScreens(val route: String) {
     object EyeDetectionScreen : NavigationScreens(EYE_DETECTION_SCREEN)
     object VoiceDetectionScreen : NavigationScreens(VOICE_DETECTION_SCREEN)
     object LanguageScreen : NavigationScreens(LANGUAGE_SCREEN)
+    object ResultScreen : NavigationScreens(RESULT_SCREEN)
 
     companion object {
         private const val SPLASH_SCREEN = "splash_screen"
@@ -18,6 +19,7 @@ sealed class NavigationScreens(val route: String) {
         private const val EYE_DETECTION_SCREEN = "eye_detection_screen"
         private const val VOICE_DETECTION_SCREEN = "voice_detection_screen"
         private const val LANGUAGE_SCREEN = "language_screen"
+        private const val RESULT_SCREEN = "result_screen"
 
         fun navigateToScreen(navController: NavController, navigationScreens: NavigationScreens) {
             when (navigationScreens) {
@@ -27,6 +29,7 @@ sealed class NavigationScreens(val route: String) {
                 is NavigationScreens.EyeDetectionScreen -> navController.navigate(NavigationScreens.EyeDetectionScreen.route)
                 is NavigationScreens.VoiceDetectionScreen -> navController.navigate(NavigationScreens.VoiceDetectionScreen.route)
                 is NavigationScreens.LanguageScreen -> navController.navigate(NavigationScreens.LanguageScreen.route)
+                is NavigationScreens.ResultScreen -> navController.navigate(NavigationScreens.ResultScreen.route)
             }
         }
     }

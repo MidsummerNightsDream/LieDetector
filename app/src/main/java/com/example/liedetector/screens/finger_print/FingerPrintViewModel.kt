@@ -20,6 +20,9 @@ class FingerPrintViewModel(application: Application) : AndroidViewModel(applicat
     private val _fingerPressedState = mutableStateOf(false)
     val fingerPressedState: State<Boolean> get() = _fingerPressedState
 
+    private val _showDialog = mutableStateOf(false)
+    val showDialog: State<Boolean> get() = _showDialog
+
     private val _vibrationState = mutableStateOf(false)
     val vibrationState: State<Boolean> get() = _vibrationState
 
@@ -31,18 +34,22 @@ class FingerPrintViewModel(application: Application) : AndroidViewModel(applicat
 
     fun changePressedState() {
         if (_fingerPressedState.value) {
-            vibrator.stopContinuousVibration()
+            if (_vibrationState.value) {
+                vibrator.stopContinuousVibration()
+            }
         } else {
-            vibrator.startContinuousVibration()
+            if (_vibrationState.value) {
+                vibrator.startContinuousVibration()
+            }
         }
         _fingerPressedState.value = !_fingerPressedState.value
     }
 
-    fun changeVibrationState(){
+    fun changeVibrationState() {
         _vibrationState.value = !_vibrationState.value
     }
 
-    fun changeSoundState(){
+    fun changeSoundState() {
         _soundState.value = !_soundState.value
     }
 
@@ -68,6 +75,10 @@ class FingerPrintViewModel(application: Application) : AndroidViewModel(applicat
     }
 
     private fun onLongPressThresholdReached() {
-        Log.e("TAG", "onLongPressThresholdReached: ", )
+        _showDialog.value = true
+    }
+
+    fun onDialogDismissed(){
+        _showDialog.value = false
     }
 }

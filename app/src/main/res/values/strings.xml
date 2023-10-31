@@ -2,5 +2,10 @@
     <string name="app_name">LieDetector</string>
     <string name="LOADING">LOADING</string>
     <string name="Finger_Print_Screen">Finger Print Screen</string>
+    <string name="Eye_Detection_Screen">Eye Detection Screen</string>
     <string name="Hold_To_Scan">Hold To Scan</string>
+    <string name="Scan_Successful">Scan Successful</string>
+    <string name="See_Results">See Results</string>
+    <string name="Lie_Detector">Lie Detector</string>
+    <string name="Rescan">Rescan</string>
 </resources>

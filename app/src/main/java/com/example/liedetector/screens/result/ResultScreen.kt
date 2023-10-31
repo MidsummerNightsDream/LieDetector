@@ -1,25 +1,22 @@
-package com.example.liedetector.screens.finger_print
+package com.example.liedetector.screens.result
 
-import android.util.Log.e
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.liedetector.R
+import com.example.liedetector.navigation.NavigationScreens
+import com.example.liedetector.screens.finger_print.FingerPrintViewModel
 import com.example.liedetector.screens.finger_print.composables.HoldButton
 import com.example.liedetector.screens.finger_print.composables.IconRow
 import com.example.liedetector.screens.finger_print.composables.Lights
 import com.example.liedetector.screens.finger_print.composables.Pulse
+import com.example.liedetector.screens.result.components.RescanButton
 import com.example.liedetector.utils.ImageBackgroundBox
 import com.example.liedetector.utils.VerticalSpacer
 import com.example.liedetector.utils.commom_composables.NavigationBar
@@ -27,9 +24,9 @@ import com.example.liedetector.utils.commom_composables.TopBarHome
 import ir.kaaveh.sdpcompose.sdp
 
 @Composable
-fun FingerPrintScreen(navController: NavController) {
+fun ResultScreen(navController: NavController) {
 
-    val viewModel = viewModel<FingerPrintViewModel>()
+    val viewModel = viewModel<ResultViewModel>()
 
     ImageBackgroundBox(bgImage = R.mipmap.bg_2) {
         Column(
@@ -37,7 +34,7 @@ fun FingerPrintScreen(navController: NavController) {
                 .fillMaxSize()
                 .padding(10.sdp),
         ) {
-            TopBarHome(stringResource(id = R.string.Finger_Print_Screen))
+            TopBarHome(stringResource(id = R.string.Lie_Detector))
             VerticalSpacer(size = 40.sdp)
             Pulse()
             VerticalSpacer(size = 20.sdp)
@@ -45,13 +42,10 @@ fun FingerPrintScreen(navController: NavController) {
             VerticalSpacer(size = 20.sdp)
             Lights()
             Spacer(modifier = Modifier.weight(1f))
-            IconRow(viewModel, navController)
-            NavigationBar()
+            RescanButton() {
+                NavigationScreens.navigateToScreen(navController, NavigationScreens.FingerPrintScreen)
+            }
+            VerticalSpacer(size = 70.sdp)
         }
     }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun FingerPrintPreview() {
 }
